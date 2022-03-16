@@ -12,9 +12,14 @@
 </head>
 <body>
 
-<h1> Click to view session details</h1>
-<form action = "sessions" method="Post">
-    <input type="submit" value="Submit">
+<h1> Here are the session details</h1>
+<form action="sessions" method="Post">
+    <% String Email = (String) session.getAttribute("email");
+        String Password = (String) session.getAttribute("password");%>
+    <p> Your e-mail is : <%=Email%></p>
+    <p>Your password is : <%=Password%></p>  
+    <p> Session id is : <%=session.getId()%><p>
+
 </form>
 </body>
 </html>

@@ -23,14 +23,7 @@ public class ForSession extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter printWriters = response.getWriter();
-        HttpSession session = request.getSession();
-        String Email = (String) session.getAttribute("email");
-        String Password = (String) session.getAttribute("password");
-
-        printWriters.println("<form >");
-        printWriters.println("<p> Your e-mail  is : </p> " + Email + "<br>"
-                + "<p>Your password is :</p> " + Password + "<br>" + "<p> Session id is <p> " + session.getId());
-        printWriters.println("</form>");
+        HttpSession session = request.getSession(false);
 
         printWriters.close();
 

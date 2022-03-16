@@ -57,7 +57,7 @@ public class ServletPractice extends HttpServlet {
 
 
         if (password.equals("123") && email.equals("admin@gmail.com")) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("forSession.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/forSession.jsp");
             //             This creates cookies
             Cookie ck = new Cookie("email", email);
             response.addCookie(ck);
