@@ -12,8 +12,10 @@
 </head>
 <body>
 <h1> Click to view cookies</h1>
-<form action = "dash" method="POST">
-<input type="submit" value="Submit">
-<form>
+<form action="dash" method="POST">
+
+    <input type="submit" value="Submit">
+</form>
+
 </body>
 </html>

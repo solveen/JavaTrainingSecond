@@ -4,10 +4,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,13 +17,27 @@ public class ServletPractice extends HttpServlet {
         message = "Hello World!";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        response.setContentType("text/html");
+//        PrintWriter out = response.getWriter();
+//        out.println("<html><body>");
+//        out.println("<h1>" + message + "</h1>");
+//        out.println("</body></html>");
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
+
+        String email = request.getParameter("email");
+        //name used inside the input tag
+        String password = request.getParameter("password");
+
+        PrintWriter printWriter = response.getWriter();
+//        printWriter.println("Hello "  + email);
+//        printWriter.println("Your password is " + password) ;
+        //dash is the url patterns of the servlet you want to run (second servlet)
+        //Url rewriting
+        printWriter.println("<a href = 'dash?uName=" + email + "'>View Session Details</a>");
+        printWriter.println("<a href = 'dash?uPass=" + password + "'>View Session Details</a>");
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,9 +56,8 @@ public class ServletPractice extends HttpServlet {
 //        printWriter.println("</form>");
 
 
-
         if (password.equals("123") && email.equals("admin@gmail.com")) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("Dashboard.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("forSession.jsp");
             //             This creates cookies
             Cookie ck = new Cookie("email", email);
             response.addCookie(ck);
@@ -55,8 +65,13 @@ public class ServletPractice extends HttpServlet {
             Cookie ckpw = new Cookie("password", password);
             response.addCookie(ckpw);
             System.out.println(ckpw.getValue());
+            HttpSession session = request.getSession();
+            //yele session create garxa
+            session.setAttribute("email", email);
+            session.setAttribute("password", password);
             //request dispatcher tala hunu parxa natra cookie store hudaina
             requestDispatcher.forward(request, response);
+
 
         } else {
 
