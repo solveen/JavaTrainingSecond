@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "ForSession", urlPatterns = "/sessions")
+@WebServlet(name = "ServletPractice2", urlPatterns = "/sessions")
 public class ForSession extends HttpServlet {
 
     public void init() {
@@ -25,6 +25,11 @@ public class ForSession extends HttpServlet {
         PrintWriter printWriters = response.getWriter();
         HttpSession session = request.getSession(false);
 
+        String Email = (String) session.getAttribute("email");
+        session.getAttribute(Email);
+        printWriters.println("<form>");
+        printWriters.println("<h1>Welcome " + Email + "</h1>");
+        printWriters.println("</form>");
         printWriters.close();
 
     }
