@@ -12,8 +12,11 @@
 </head>
 <body>
 <h1> Click to view cookies</h1>
-<form action="dash" method="POST">
+<form action="sessions2" method="POST">
 
+    <% String email = (String) session.getAttribute("email");%>
+    <p>Click to view your email</p>
+    <input type = "hidden" name = "email" value = "<%=email%>" >
     <input type="submit" value="Submit">
 </form>
 

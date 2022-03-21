@@ -19,8 +19,7 @@
     <p> Hello : <%=Email%>
     </p>
 
-    <input type ='hidden' name='Email' value = <%=Email%> >
-    <a href=""><input type ='submit' value = 'Submit'></a>
+
 </form>
 </body>
 </html>

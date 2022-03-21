@@ -59,14 +59,14 @@ public class ServletPractice extends HttpServlet {
 
         if (password.equals("123") && email.equals("admin@gmail.com")) {
             HttpSession session = request.getSession();
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/forSession.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/sessions");
             //             This creates cookies
             Cookie ck = new Cookie("email", email);
             response.addCookie(ck);
-            System.out.println(ck.getValue());
+//            System.out.println(ck.getValue());
             Cookie ckpw = new Cookie("password", password);
             response.addCookie(ckpw);
-            System.out.println(ckpw.getValue());
+//            System.out.println(ckpw.getValue());
 
             //yele session create garxa
             session.setAttribute("email", email);
